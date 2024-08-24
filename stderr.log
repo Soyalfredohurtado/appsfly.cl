@@ -1,0 +1,109 @@
+[2024-07-03 09:58:12,681] ERROR in app: Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/routes/dashboard.py", line 36, in dashboard
+    cierre_diario_actual = contar_por_key(DB, 'cierre_diario_ventas',
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/script/python/db/consulta_db.py", line 115, in contar_por_key
+    cursor.execute(
+sqlite3.OperationalError: no such table: cierre_diario_ventas
+[2024-07-03 10:04:58,000] ERROR in app: Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/routes/dashboard.py", line 36, in dashboard
+    cierre_diario_actual = contar_por_key(DB, 'cierre_diario_ventas',
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/script/python/db/consulta_db.py", line 115, in contar_por_key
+    cursor.execute(
+sqlite3.OperationalError: no such table: cierre_diario_ventas
+False <class 'str'> 0
+[2024-07-03 10:06:27,190] ERROR in app: Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/routes/dashboard.py", line 36, in dashboard
+    cierre_diario_actual = contar_por_key(DB, 'cierre_diario_ventas',
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/script/python/db/consulta_db.py", line 115, in contar_por_key
+    cursor.execute(
+sqlite3.OperationalError: no such table: cierre_diario_ventas
+[2024-07-03 10:07:24,883] ERROR in app: Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/routes/dashboard.py", line 36, in dashboard
+    cierre_diario_actual = contar_por_key(DB, 'cierre_diario_ventas',
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/appsfly/script/python/db/consulta_db.py", line 115, in contar_por_key
+    cursor.execute(
+sqlite3.OperationalError: no such table: cierre_diario_ventas
+True <class 'str'> 0
+[2024-07-03 10:17:32,033] ERROR in app: Exception on /movimientos_financiero/cierre_ventas_diario [GET]
+Traceback (most recent call last):
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/opticayc/virtualenv/appsfly/3.11/lib/python3.11/site-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'movimientos_financiero.cierre_diario_table' did not return a valid response. The function either returned None or ended without a return statement.
+False <class 'str'> 0

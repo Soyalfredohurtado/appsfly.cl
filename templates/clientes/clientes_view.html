@@ -1,0 +1,43 @@
+{% extends './layout.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block submenu %}
+    {% include 'sub-nav.html' %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="card p-2 mt-2">
+        <h6 class="h6 text-center border bg-primary-subtle">
+            Detalle de venta
+        </h6>
+    </div>
+    
+    <div class="card p-2 mt-2">
+        <h6 class="h6 text-center border bg-primary-subtle mt-2">
+            Pagos y Abonos
+        </h6>
+        {% include 'movimientos_financieros/pago_abonos_table.extends.html' %}
+    </div>
+    
+    <div class="card p-2 mt-2">
+        <h6 class="h6 text-center border bg-primary-subtle mt-2">
+            Ventas
+        </h6>
+    </div>
+        <div class="card p-2 mt-2">
+        <h6 class="h6 text-center border bg-primary-subtle mt-2">
+            Ventas
+        </h6>
+    </div>
+</div>
+
+{% endblock %}

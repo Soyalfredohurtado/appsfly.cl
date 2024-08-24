@@ -1,0 +1,32 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly: database {% endblock %}
+
+<!--{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}-->
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card text-center">
+        <div class="card-header bg-success text-white">
+            <h2>¡Felicitaciones!</h2>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title mb-2">Tu negocio <strong>{{negocio_nombre | mayuscula }}</strong> ha sido creado en nuestro sistema</h4>
+
+            <p class="card-text mb-2">Para poder ofrecerte un mejor servicio, es importante que nos hagas llegar todas las sugerencias a través del botón de sugerencias que encontrarás en tu perfil.</p>
+            <div class="p-2">
+                <a href="/usuarios/perfil" class="btn btn-primary w-25">Perfil</a>
+                <a href="/dashboard" class="btn btn-success w-25">Avanzar</a>
+            </div>
+        </div>
+        <div class="card-footer text-muted text-dark">
+            <span class="text-dark">contactos:
+            <a href="https://wa.me/56921629730"  target="_blank"  class="link-secondary" title="ir a whatsapp"><i class="fa-brands fa-whatsapp"></i> +56 921629730</a> |
+            <a href="mailto:appsfly.cl@gmail.com" class="link-secondary"><i class="fa-regular fa-envelope" title="ir al correo"></i> appsfly.cl@gmail.com</a> |
+            <a href="https://www.instagram.com/appsfly.cl/" target="_blank" class="link-secondary" title="ir a intagram"><i class="fa-brands fa-instagram"  alt="logo_intagram"></i> appsfly.cl</a></span>
+        </div>
+    </div>
+</div>
+{% endblock %}

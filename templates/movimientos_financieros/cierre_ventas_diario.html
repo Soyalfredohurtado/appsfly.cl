@@ -1,0 +1,65 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ data.title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row p-1">
+    <div class="col-7">
+        <button href="/ventas/add" class="btn btn-success btn-sm m-1" data-bs-toggle="modal" data-bs-target="#cerrarCajaFecha"><i class="fa-solid fa-plus"
+        ></i>
+            AGREGAR</button>
+        <button class="btn btn-light btn-sm m-1 disabled ">Reporte</button>
+    </div>
+    <div class="col-5 text-center ">
+        <h4 style="color: rgb(0, 91, 103);">{{ data.title }}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered  table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>FECHA</th>
+                    <th>CAJA</th>
+                    <th>VENTAS N°</th>
+                    <th>VENTAS $</th>
+                    <th>INGRESOS</th>
+                    <th>EFECTIVO</th>
+                    <th>TRANSF</th>
+                    <th>PUNTO</th>
+                    <th>VENDEDROR</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cierre in data.cierres %}
+                <tr class="table table-bordered m-0">
+                    <td class="text-center p-1 m-0">{{ cierre[1] | formatear_fecha }}</td>
+                    <td class="text-center p-1 m-0">1</td>
+                    <td class="text-center p-1 m-0">{{ cierre[8] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ cierre[3] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ cierre[4] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ cierre[5] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ cierre[6] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ cierre[7] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ cierre[2] }}{{ cierre[9] }}</td>
+                    <td class="text-center pt-1 pb-1 mb-0">
+                        <a href="/pdf/cierre_venta_diario/{{ cierre[0] }}" title="reporte pdf" class="p-0 m-0"><i
+                                class="fa-regular fa-file"></i></a>
+                        <a href="/movimientos_financiero/cierre_ventas_diario/view/{{ cierre[0] }}" title="ver" class="p-0 m-0"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    
+</div>
+{% include 'modales/add_cierre_caja_fecha.html' %}
+{% endblock %}

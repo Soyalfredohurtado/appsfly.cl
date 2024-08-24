@@ -1,0 +1,62 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ datos.title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+
+{% block submenu %}
+    {% include 'sub-nav.html' %}
+{% endblock %}
+
+{% block body %}
+
+<div class="row p-1">
+    <div class="col-7">
+        <a href="/usuarios/add" class="btn btn-success btn-sm m-1"><i class="fa-solid fa-plus"></i> AGREGAR</a>
+        <button class="btn btn-light btn-sm m-1 disabled ">Carga masiva</button>
+        <button class="btn btn-light btn-sm m-1 disabled ">Reporte</button>
+    </div>
+    <div class="col-5 text-center">
+        <h4 style="color: rgb(0, 91, 103);">{{datos.title}}</h4>
+    </div>
+</div>
+<table class="table table-striped table-bordered  table-hover">
+
+    <thead>
+        <tr class="text-center">
+            <th>NOMBRE Y APELLIDO</th>
+            <th>ROL</th>
+            <th>STATUS</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in datos.usuarios %}
+        <tr class="table table-bordered m-0 ">
+            <td class="p-1 m-0">{{ usuario[1] }}</td>
+            <td class="text-center p-1 m-0">{{ usuario[2] }}</td>
+            <td class="p-1 m-0">{{ usuario[3] }}</td>
+            <td class="p-1 text-center mb-0">
+                <!-- view -->
+                <a href="/clientes/{{ usuario[0] }}"><i class="fa-regular fa-eye"></i></a>
+                <!-- edit -->
+                <a href="/clientes/edit{{ usuario[0] }}"><i class="fa-solid fa-pen-to-square"></i></i></a>
+                <!-- delete -->
+                <a onclick="confirmarEliminar('{{ usuario[0] }}')"><i class="fa-regular fa-trash-can"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    function confirmarEliminar(cliente) {
+        var confirmacion = confirm('Eliminar Usuario?');
+        if (confirmacion) {
+            window.location.href = "/usuarios/delete/" + encodeURIComponent(cliente);
+        }
+    }
+</script>
+{% endblock %}

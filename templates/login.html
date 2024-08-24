@@ -1,0 +1,34 @@
+{% extends './layout.html' %}
+
+{% block body %}
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-5 fw-bold lh-1 text-body-emphasis mb-3">APPSFLY CHILE</h1>
+            <p class="fs-5">Bienvenido a nuestro sistema web de gestión empresarial, la forma mas facil y segura de llevar el control de tus <span class="badge bg-primary-subtle text-dark">ventas, inventario y clientes.</span></p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5 border rounded-3 bg-body-tertiary shadow shadow-sm">
+            <form class="p-4" action="/" method="POST">
+                <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" name="usuario_correo"
+                            placeholder="name@example.com" required value="{{ usuario_correo }}">
+                        <label for="floatingInput">Correo Electrónico</label>
+                </div>
+                <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword" name="usuario_password"
+                            placeholder="Password" required>
+                        <label for="floatingPassword">Contraseña</label>
+                </div>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+                <a class="w-100 btn btn-lg btn-outline-primary mt-1" type="submit" href="/usuarios/registar-usuario"> Registar </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5366467483403335"
+     crossorigin="anonymous"></script>
+</div>
+{% endblock %}

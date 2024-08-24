@@ -1,0 +1,42 @@
+<!-- Modal para Registrar Gastos -->
+<div class="modal fade" id="registroCategoriaGastos" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="registroGastosLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="registroGastosLabel">Registro Nueva Categoria</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="registarClasificacionGasto" method="POST"
+                action="{{ url_for('gastos.gastos_categoria_add') }}" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    <input type="text" class="form-control m-0" id="categoriaGastoID" name="categoriaGastoID"
+                        value="{{ gasto_categoria_id }}" readonly hidden >
+
+
+                    <div class="{{ style.m_div }}">
+                        <label for="categoriaGastoNombre" class="{{ style.m_span }}">Nombre</label>
+                        <input type="text" class="{{ style.m_input }}" id="categoriaGastoNombre"
+                            name="categoriaGastoNombre" required>
+
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label for="categoriaGastoStatus" class="{{ style.m_span }}">Status</label>
+                        <select class="form-select" id="categoriaGastoStatus" name="categoriaGastoStatus"
+                            required>
+                            <option value="1" class="text-center">Habilitado</option>
+                            <option value="0" class="text-center">Deshabilitado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-sm" id="btnRegistarClasificacionGasto">Registrar
+                        Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/modales.js') }}"></script>

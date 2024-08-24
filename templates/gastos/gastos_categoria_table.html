@@ -1,0 +1,55 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row p-1">
+    <div class="col-4 col-md-7">
+        <button button type="button" data-bs-toggle="modal" data-bs-target="#registroCategoriaGastos"
+            class="btn btn-success btn-sm m-1">
+            <i class="fa-solid fa-plus"></i>
+            <span class="d-none d-sm-inline">Agregar</span>
+        </button>
+        <a type="button" class="btn btn-success btn-sm m-1" href="/gastos">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="d-none d-sm-inline">Volver</span>
+        </a>
+    </div>
+    <div class="col-8 col-md-5 text-center ">
+        <h4 class="m-1" style="color: rgb(0, 91, 103);">{{title}}</h4>
+    </div>
+</div>
+
+<div class="container row">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered  table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>Nombre</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in claisicacion_gastos %}
+                <tr class="table table-bordered m-0 ">
+                    <td class="p-1 m-0">{{c[1]}}</td>
+                    <td class="p-1 m-0">
+                        {{ 'Habilitado' if c[2] == 1 else 'Deshabilitado' }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include 'gastos/add_gasto_categoria.html' %}
+
+
+
+
+{% endblock %}

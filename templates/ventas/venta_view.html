@@ -1,0 +1,223 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card p-2 mt-2">
+        <div class="row px-1">
+            <div>
+
+            </div>
+            
+            <div class="col-12 col-md-6">
+                <h6 class="h6 text-center border bg-primary-subtle">
+                    Detalle de venta
+                </h6>
+                <div class="row">
+                    <div class="form-group row">
+                        <label for="rutCliente" class="col-4 col-form-label-sm text-end text-secondary">Rut</label>
+                        <div class="col-8">
+                            <input type="text" value="{{ cliente[1] }}" class="form-control form-control-sm text-center"
+                                id="rutCliente" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nombresCliente"
+                            class="col-4 col-form-label-sm text-end text-secondary">Nombres</label>
+                        <div class="col-8">
+                            <input type="text" value="{{ cliente[2] }}"
+                                class="form-control form-control-sm text-danger text-center" id="nombresCliente" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="telefonoCliente"
+                            class="col-4 col-form-label-sm text-end text-secondary">Teléfono</label>
+                        <div class="col-8">
+                            <input type="text" value="{{ cliente[3] }}" class="form-control form-control-sm text-center"
+                                id="telefonoCliente" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="emailCliente" class="col-4 col-form-label-sm text-end text-secondary">Email</label>
+                        <div class="col-8">
+                            <input type="text" value="{{ cliente[4] }}" class="form-control form-control-sm text-center"
+                                id="emailCliente" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="form-group row">
+                    <label for="numeroVenta" class="col-4 col-form-label-sm text-end text-secondary">Nro
+                        Venta</label>
+                    <div class="col-8">
+                        <input type="text" value="{{ data[1] }}" class="form-control form-control-sm text-center text-danger" id="numeroVenta" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="numeroVenta" class="col-4 col-form-label-sm text-end text-secondary">Fecha</label>
+                    <div class="col-8">
+                        <input type="data" value="{{ data[3] }}" class="form-control form-control-sm text-center"
+                            id="numeroVenta" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="numeroVenta" class="col-4 col-form-label-sm text-end text-secondary">Hora</label>
+                    <div class="col-8">
+                        <input type="text" value="{{ data[4] }}" class="form-control form-control-sm text-center"
+                            id="numeroVenta" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="vendedor" class="col-4 col-form-label-sm text-end text-secondary">Vendedor</label>
+                    <div class="col-8">
+                        <input type="text" value="Milagros Prada" class="form-control form-control-sm text-center"
+                            id="vendedor" readonly>
+                    </div>
+                </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="mt-2">
+                <h6 class="h6 text-center border bg-primary-subtle">
+                    Productos y Servicios
+                </h6>
+            </div>
+            
+            
+            <div class="col-12">
+                <div class="table-responsive p-1">
+                    <table class=" table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dt in venta_dt %}
+                        <tr>
+                            <td>{{ dt[12] }}</td>
+                            <td>{{ dt[11] }}</td>
+                            <td class="text-center">{{ dt[4] }}</td>
+                            <td class="mil_000 text-end">{{ dt[3] }}</td>
+                            <td class="mil_000 text-end"> {{ dt[5] }}</td>
+                            <td class="text-center"><input class="form-check-input" type="checkbox" value=""
+                                    id="checkboxActivo" checked readonly></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+
+        
+        
+        <div class="row mt-2">
+            
+            <div class="col-12 col-md-6 p-2 order-2 order-sm-1">
+                <textarea class="form-control" name="" id="" cols="30" rows="2" maxlength="110" readonly>observaciones: {{ data[6] }}</textarea>
+            </div>
+            
+            
+            <div class="col-12 col-md-6 order-1 order-sm-2">
+                <h6 class="h6 text-center border bg-primary-subtle">Pagos y abonos
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Metodo</th>
+                                <th class="text-center">Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in pa %}
+                            <tr>
+                                <td class="text-center">{{ p[7] }}</td>
+                                <td> {{ p[10] }}</td>
+                                <td class="text-end mil_000">{{ p[2] }}</td>
+    
+                            </tr>
+                            {% endfor %}
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="fw-bold text-center bg-primary-subtle">
+            <span class="text-dark ">monto: $<span class="mil_000">{{ tt_cc_pa.total }}</span> || abonado: $<span
+                    class="mil_000">{{ tt_cc_pa.abono }} </span> || cxc <span class="mil_000 text-danger">${{
+                    tt_cc_pa.cxc }}</span></span>
+        </div>
+        <div class="pt-2">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#pagoAbono" class="btn btn-sm btn-success">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                </svg>
+                <span class="d-none d-sm-inline">Pago/Abono</span>
+            </button>
+            
+            <button class="btn btn-sm btn-success" onclick="imprimirPagina()"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                    <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                    <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+                </svg>
+                <span class="d-none d-sm-inline">Imprimir</span>
+            
+            </button>
+            
+            <button class="btn btn-sm btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
+                </svg>
+                <span class="d-none d-sm-inline">Comprobante</span>
+            </button>
+            
+            <button class="btn btn-sm btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                </svg>
+                <span class="d-none d-sm-inline">Anterior</span>
+            </button>
+            
+            <button class="btn btn-sm btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                </svg>
+                <span class="d-none d-sm-inline">Siguiente</span>
+                
+                 
+            </button>
+            
+            
+        </div>
+    </div>
+</div>
+
+{% include 'modales/add_apago_y_abono.html' %}
+{% endblock %}
+
+

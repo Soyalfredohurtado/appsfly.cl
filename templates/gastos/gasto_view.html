@@ -1,0 +1,45 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row py-2 px-5">
+    <div class="card p-3 shadow">
+        <div class="card-header">
+            <h1 class="h4 text-center">
+                {{data.title}}
+            </h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="text" class="form-control" id="fecha" value="{{data.gasto[0][1]}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="clasificacion" class="form-label">Clasificación:</label>
+                        <input type="text" class="form-control" id="clasificacion" value="{{data.gasto[0][2]}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="motivo" class="form-label">Motivo:</label>
+                        <input type="text" class="form-control" id="motivo" value="{{data.gasto[0][2]}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="monto" class="form-label">Monto:</label>
+                        <input type="text" class="form-control" id="monto" value="{{data.gasto[0][3]}}" readonly>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">               
+                    <img src="/static/img/./database/negocios/1_777192884.sql/img-ge184b70c4.jpg" width="80%"  class="img-fluid rounded" alt="comprobante-gasto">     
+                    <img src="{{data.gasto[0][5]}}" width="80%"  class="img-fluid rounded" alt="comprobante-gasto">               
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

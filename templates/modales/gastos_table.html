@@ -1,0 +1,77 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row p-1">
+    <div class="col-3 col-md-2 order-2 order-sm-1">
+        <a type="button" class="btn btn-success btn-sm m-1" href="#">
+            <span class="d-none d-sm-inline">Agregar</span>
+            <span class="d-inline d-sm-none"><i class="fa-solid fa-plus"></i></span>
+        </a>
+    </div>
+    <div class="col-9 col-md-5 text-center order-3 order-sm-2">
+        <h4 class="text-danger m-1">Efectivo: 35.000</h4>
+    </div>
+    <div class="col-12 col-md-5 text-center order-1 order-sm-3">
+        <h4 class="m-1" style="color: rgb(0, 91, 103);">{{title}}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered  table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>FECHA</th>
+                    <th>NRO</th>
+                    <th>CLASIF</th>
+                    <th>MOTIVO</th>
+                    <th>MONTO</th>
+                    <th>USUARIO</th>
+                    <th>COMPROB</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in gastos %}
+                <tr class="table table-bordered m-0 ">
+                    <td class="text-center p-1 m-0">{{ g[1] }}</td>
+                    <td class="text-center p-1 mb-2">g-{{ g[8] }}</td>
+                    <td class="p-1 m-0">{{ g[4] }}</td>
+                    <td class="p-1  m-0">{{ g[2] }}</td>
+                    <td class="text-end p-1 m-0 mil_000">{{ g[3] }}</td>
+                    <td class="p-1 m-0">{{ g[9] }}</td>
+                    <td class="p-1 m-0 ">
+                        <img class="img-fluid rounded" src="{{ g[5] }}" style="width: 50px; height: 50px;" alt="">
+                    </td>
+                    <td class="text-center p-1  mb-0">
+                        <a href="/productos_y_servicios/{{ g[0] }}"><i class="fa-regular fa-eye"></i></a>
+                        <a href="/productos_y_servicios/edit/{{ g[0] }}"><i
+                                class="fa-solid fa-pen-to-square"></i></i></a>
+                        <a onclick="confirmarEliminarProducto('{{ g[0] }}')"><i class="fa-regular fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+<script>
+    function confirmarEliminarProducto(producto) {
+        var confirmacion = confirm('Eliminar Gasto?');
+        if (confirmacion) {
+            window.location.href = "/productos_y_servicios/delete/" + encodeURIComponent(producto);
+        }
+    }
+</script>
+{% include 'modales/add_registrar_gasto.html' %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ datos.title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="col-12 col-md-7 col-lg-6">
+    <div class="card m-2 p-2">
+        <div class="row">
+            <div class="col-12 col-md-4 text-center">
+                <img class="w-75"src="https://img.freepik.com/vector-premium/imagen-perfil-avatar-hombre-ilustracion-vectorial_268834-538.jpg?size=338&ext=jpg&ga=GA1.1.672697106.1718582400&semt=sph" >
+            </div>
+            <div class="col-12 col-md-6 pt-2 px-3">
+                
+                <div>
+                    <a class=" btn btn-danger btn-sm m-1 w-100 text-center" href="{{ url_for('logout') }}">Cerrar Sesion </a>
+                </div>
+                <div>
+                    <button type="button" class=" btn btn-success btn-sm m-1 w-100 text-center" type="button" data-bs-toggle="modal"
+                        data-bs-target="#nuevoPasswordUsuario">
+                        Actualizar Contraseña
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="row mb-2">
+                <div class="col-5">
+                    Nombre y Apellido:
+                </div>
+                <div class="col-7">
+                    {{ current_user.fullname | mayuscula }}
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-5">
+                    {{ 'RUN' if datos_usuarios[1] == 0 }}{{ 'Pasaporte' if datos_usuarios[1] == 1 }}:
+                </div>
+                <div class="col-7">
+                    {{ datos_usuarios[2] }}
+                </div>
+            </div>
+            
+            <div class="row mb-2">
+                <div class="col-5">
+                    E-mail:
+                </div>
+                <div class="col-7">
+                    {{ current_user.email | mayuscula }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    Telefono:
+                </div>
+                <div class="col-7">
+                    {{datos_usuarios[9]}} {{datos_usuarios[10]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'usuarios/usuario_cambio_contrasena_modal.html' %}
+
+{% endblock %}

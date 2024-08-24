@@ -1,0 +1,100 @@
+<!-- Modal para Registrar Gastos -->
+<div class="modal fade" id="registroGastos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="registroGastosLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="registroGastosLabel">Registro de Gastos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="registarGasto" method="POST" action="{{ url_for('modales.regirtar_gasto') }}">
+                <div class="modal-body">
+                    <label for="fechaGasto" class="form-label mb-0 mt-2">Fecha:  </label>
+                    <input type="date" class="form-control m-0" id="fechaGasto" name="fechaGasto"  value="{{ datos.gastos.dia_actual }}">
+
+                    <label for="motivoGasto" class="form-label mb-0 mt-2">Motivo</label>
+                    <input type="text" class="form-control" id="motivoGasto" name="motivoGasto" required>
+
+                    <label for="clasificacionGasto" class="form-label mb-0 mt-2">Clasificación</label>
+                    <select class="form-select" id="clasificacionGasto" name="clasificacionGasto" required>
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="1">Sueldo</option>
+                        <option value="2">Cristales</option>
+                        <option value="3">Marcos</option>
+                        <option value="4">Articulos de Limpieza</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>
+
+                    <label for="montoGasto" class="form-label mb-0 mt-2">Monto</label>
+                    <input type="number" class="form-control" id="montoGasto" name="montoGasto" placeholder="0.00"
+                        step="0.01" required>
+
+                    <label for="comprobanteGasto" class="form-label mb-0 mt-2">Comprobante (Imagen o PDF)</label>
+                    <input type="file" class="form-control" id="comprobanteGasto" name="comprobanteGasto"
+                        accept="image/*,application/pdf">
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-sm" id="btnRegistarGasto">Registrar Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/modales.js') }}"></script>
+
+
+<script>/*
+$(document).ready(function ($) {
+$('#btnRegistarGasto').click(function () {
+/* Verificar campos obligatorios
+var camposObligatoriosVacios = false;
+$('input[required]').each(function () {
+if ($(this).val() === '') {
+camposObligatoriosVacios = true;
+return false; // Detener el bucle si se encuentra un campo vacío
+}
+});*/
+    /*
+            // Si hay campos obligatorios vacíos, mostrar mensaje de error y no enviar el formulario
+            if (camposObligatoriosVacios) {
+                alert('Por favor, complete todos los campos obligatorios.');
+                return; // Detener la ejecución del código
+            }*/
+
+    // Agregar los datos de la tabla al objeto formData
+    /* var formData = $('#registarGasto').serialize();
+
+     // Si todos los campos obligatorios están completos, enviar el formulario
+     console.log(formData)
+     $.ajax({
+         url: 'add_gasto',
+         type: 'POST',
+         data: formData,
+         success: function (response) {
+             console.log(response);
+             // Recargar la página después de enviar el formulario
+             location.reload();
+         },
+         error: function (xhr, status, error) {
+             console.error('Error al enviar los datos:', error);
+         }
+     });
+ });
+});
+*/
+</script>
+
+
+
+
+
+<!-- 
+<div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#registroGastos">
+        Registrar Gasto
+    </button>
+</div>
+-->

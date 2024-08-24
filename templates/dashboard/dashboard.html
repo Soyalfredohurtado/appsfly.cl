@@ -1,0 +1,236 @@
+{% extends './layout.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block submenu %}
+    {% include 'sub-nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row p-2">
+    <div class="col-12 col-md-6 col-lg-3 m-0 p-1 ">
+        <div class="card p-2 m-1 shadow">
+            <div class="card-title text-center mb-0">
+                <h4>
+                    Caja: 1
+                </h4>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-text mx-2 ">
+                <div class="row">
+                    <div class="col-6 text-end">
+                        <div class="m-0 p-0">
+                            <span class="fs-5">Ventas:</span>
+                        </div>
+                        <div class="m-0 p-0">
+                            <span class="fs-5">Ingresos:</span>
+                        </div>
+                        <div class="m-0 p-0">
+                            <span class="fs-5"> Gastos:</span>
+                        </div> 
+                    </div>
+                    <div class="col-6 text-end">
+                        <div>
+                            <span class="text-end m-2 text-success mil_000 fs-5"><b>{{ datos.caja.ventas_dia }}</b></span>
+                        </div>
+                        <div>
+                            <span class="text-end m-2 text-success mil_000 fs-5"><b>{{ datos.caja.ingresos_dia }}</b></span>
+                        </div>
+                        <div>
+                            <span class="text-end m-2 text-danger mil_000 fs-5"><b>{{ datos.caja.gastos_dia }}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr class="m-0 p-0 mb-2">
+                    <div>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#cerrarCaja"
+                            class="{{ style.btn }} btn-danger" title="Cerrar Caja" {{ datos.caja.i_cierre_caja}}>
+                            <!-- cierre -->
+                            <i class="fa-solid fa-lock"></i>
+                        </button>
+                        <a class="{{ style.btn }}" title="Abrir Caja" href="/modales/cierre_caja" {{
+                            datos.caja.i_abir_caja }}>
+                            <!-- apertura -->
+                            <i class="fa-solid fa-unlock"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="col-12 col-md-6 col-lg-3 m-0 p-1">
+        <div class="card p-2 m-1 shadow">
+            <div class="card-title text-center">
+                <h4 class="mb-0">
+                    Por Cobrar
+                </h4>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-text mx-2">
+                <div class="row">
+                    <div class="col-6 text-end">
+                        <div class="m-0 p-0">
+                            <span class="fs-5">Vigentes: </span>
+                        </div>
+                        <div class="m-0 p-0">
+                            <span class="fs-5">Vencidas: </span>
+                        </div>
+                        <div class="m-0 p-0">
+                            <span class="fs-5"> Total:</span>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end px-3">
+                        <span class="text-end m-2 text-success mil_000 fs-5"><b>{{ datos.cxc }}</b></span><br>
+                        <span class="text-end m-2 text-danger mil_000 fs-5"><b>0</b></span><br>
+                        <span class="text-end m-2 text-success mil_000 fs-5"><b>{{ datos.cxc }}</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-link">
+                <hr class="m-0 p-0 mb-2">
+                <a href="{{ url_for('ventas.ventas_table_cxc') }}" class="{{ style.btn }}">
+                    <!-- view -->
+                    <i class="fa-regular fa-eye"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3 m-0 p-1">
+        <div class="card p-2 m-1 shadow">
+            <div class="card-title text-center">
+                <h4>
+                    Por Entregar
+                </h4>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-text text-center mx-2">
+                <h3 style="color: rgb(198, 2, 21);" class="mil_000">
+                    <b>
+                        0
+                    </b>
+                </h3>
+                <br>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-link">
+                <a href="#" class="{{ style.btn }}">
+                    <!-- view -->
+                    <i class="fa-regular fa-eye"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 m-0 p-1">
+        <div class="card p-2 m-1 shadow" style="height: 180px;">
+            <div class="card-title text-center">
+                <h4>
+                    Ventas Mensuales
+                </h4>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-text text-center mx-2">
+                <h3 style="color: rgb(198, 2, 21);" class="mil_000"><b>{{ datos.total_venta_mes_actual }}</b></h3>
+                <br>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-link">
+                <!-- report -->
+                <a href="#" class="{{ style.btn }}">
+                    <i class="fa-regular fa-file-pdf"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- BOX:  Gastos - Efectivo -->
+    <div class="col-12 col-md-6 col-lg-3 m-0 p-1">
+        <div class="card p-2 m-1 shadow" style="height: 180px;">
+            <div class="card-title text-center">
+                <h4>
+                    Gastos Mensuales
+                </h4>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-7 text-end">
+                        <span class="fs-5">Gastos mes:</span>
+                    </div>
+                    <div class="col-5  text-end">
+                        <span class="text-end text-success fs-5 text-end mil_000"><b>{{ datos.box_gasto_efecivo.gastos_mes }}</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-7 text-end">
+                        <span class="fs-5" title="Efectivo Disponible">Eft Disp:</span>
+                    </div>
+                    <div class="col-5 text-end">
+                        <span class="text-end text-success  fs-5 mil_000"><b> {{ datos.box_gasto_efecivo.efectivo_disponible }} </b></span>
+                    </div>
+                </div>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-link">
+                <!-- add -->
+                <button class="{{ style.btn }}" type="button" data-bs-toggle="modal" data-bs-target="#registroGastos">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <!-- ver -->
+                <a href="/gastos" class="{{ style.btn }}">
+                    <i class="fa-regular fa-eye"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="m-1 p-0">
+<div class="row">
+    <h5 class="text-center m-0 p-0 mb-1">accesos directos</h5>
+    <div class="row ">
+        <div class="col-6 col-md-4 col-lg-3">
+            <a class="{{ style.link }}" href="/ventas/add">Registar Venta</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <a class="{{ style.link }}" href="/ventas">Tabla de Venta</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <a class="{{ style.link }} w-100" href="/movimientos_financiero">Pagos y Abonos</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <a class="{{ style.link }}" href="/movimientos_financiero/cierre_ventas_diario">Cierre Diarios</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <a class="{{ style.link }}" href="/gastos">Table Gastos</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <a class="{{ style.link }}" href="/movimientos_financiero/efectivo">Movimiento Efectivo</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" {{ 'hidden' if current_user.rol != 0 else ''  }}>
+            <a class="{{ style.link }}" href="historial/db"  >Historial dt eliminada</a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" {{ 'hidden' if current_user.rol != 0 else ''  }}>
+            <a class="{{ style.link }}" href="usuarios/negocios/table">Negocios Registrados</a>
+        </div>
+    </div>
+</div>
+
+<!-- aca van todos los modales  -->
+{% include 'modales/cerrar_caja.html' %}
+{% include 'modales/add_caja_venta.html' %}
+{% include 'gastos/add_gasto.html' %}
+
+{% endblock %}

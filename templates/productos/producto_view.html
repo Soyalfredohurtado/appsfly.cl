@@ -1,0 +1,71 @@
+<!-- Esta vista muestra el detalle del producto/servicio -->
+{% extends './layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block title_doby %}
+<div class="text-center mt-2">
+    {% for p in producto %}
+    <h2> {{ p[2] }} </h2>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="col-12">
+    <div>
+        <form action="/productos_y_servicios/add_producto_actuazliar" method="POST">
+            <div class="row px-5">
+                <div class="col-7">
+                    {% for p in producto %}
+                    <div class="form-group mb-2">
+                        <span><b>{{ p[4] }}</b></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_codigo">Codigo unico</label>
+                        <span><b>{{ p[1] }}</b></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_precio">Precio: </label>
+                        <span><b>{{ p[3] }}</b></span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_stock">Stock Actual: </label>
+                        <span><b> pendiente </b></span>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="producto_stock">Descripción: </label>
+                        <span><b>{{ p[9] }}</b></span class="form-control">
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="/productos_y_servicios" class="btn btn-warning btn-sm m-2">volver</a>
+                        <a href="/productos_y_servicios/edit/{{ p[0] }}" class="btn btn-primary btn-sm m-2">Editar</a>
+                    </div>
+                </div>
+                <div class="col-5 bg-light">
+                    <!-- PENDIENTE: aca va una grafica de venta-->
+                    <br><br><br>
+                    <h4 class="text-center"> imagen no dispobible </h4>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="bg-light mt-2 ">
+                    <br><br>
+                    <h1 class="text-center">
+                        grafica no dispobible
+                    </h1>
+                    <br><br>
+                </div>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

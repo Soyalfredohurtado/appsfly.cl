@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cierre Diario de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        span {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cierre Diario de Ventas</h1>
+
+    <label>TOTAL VENTAS:</label>
+    <span>{{ data.ventas }}</span>
+    <br>
+
+    <label>TOTAL INGRESOS:</label>
+    <span>{{ data.ingresos }}</span>
+
+    <hr>
+
+    <h2>Detalle Ingresos</h2>
+    <label>Efectivo$ :</label>
+    <span>{{ data.efectivo }}</span>
+    <br>
+
+    <label>Transferencias $:</label>
+    <span>{{ data.transferencia }}</span>
+    <br>
+
+    <label>Punto de Venta $:</label>
+    <span>{{ data.punto_venta }}</span>
+
+    <hr>
+
+    <h2>Detalle Venta</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>N° FOLIO</th>
+                <th>VENDEDOR</th>
+                <th>CLIENTE</th>
+                <th>MONTO</th>
+                <th>ABONADO</th>
+                <th>CXC</th>
+            </tr>
+        </thead>
+
+
+    </table>
+
+    <hr>
+
+    <h2>Detalle gastos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>N° CONTROL</th>
+                th>CLASIF</th>
+                <th>MOTIVO</th>
+                <th>MONTO</th>
+                <th>USUARIO</th>
+            </tr>
+        </thead>
+    </table>

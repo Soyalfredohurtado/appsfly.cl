@@ -1,0 +1,49 @@
+<!-- Modal para Registrar Gastos -->
+<div class="modal fade" id="registroGastos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="registroGastosLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="registroGastosLabel">Registrar Gastos:</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="registarGasto" method="POST" action="{{ url_for('gastos.gastos_add') }}"
+                enctype="multipart/form-data">
+                <div class="modal-body">
+                    <input type="text" class="form-control m-0" id="gastoID" name="gastoID" value="{{ gasto_id }}"
+                        readonly hidden>
+                    <div class="{{ style.m_div }}">
+                        <label for="gastoFecha" class="{{ style.m_span }}">Fecha</label>
+                        <input type="date" class="{{ style.m_input }}" id="gastoFecha" name="gastoFecha"
+                            value="{{fecha_actual}}" readonly>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label for="gastoCategoria" class="{{ style.m_span }}">Categoría</label>
+                        <select class="form-select" id="gastoCategoria" name="gastoCategoria" required>
+                            <option value="" selected disabled class="text-center">Seleccionar</option>
+                            {% for categoria in gastos_categoria %}
+                            <option value="{{ categoria[0] }}" class="text-center">{{ categoria[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class=" {{ style.m_div }}">
+                        <label for="gastoMotivo" class="{{ style.m_span }}">Motivo</label>
+                        <input type="text" class="{{ style.m_input }}" id="gastoMotivo" name="gastoMotivo" required>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label for="gastoMonto" class="{{ style.m_span }}">Monto</label>
+                        <input type="number" class="{{ style.m_input }}" id="gastoMonto" name="gastoMonto"
+                            placeholder="0.00" step="0.01" required>
+                    </div>
+                    <input type="file" class="form-control" id="comprobanteGasto" name="comprobanteGasto"
+                        accept="image/*" title="Comprobante (Imagen o PDF)">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-sm" id="btnRegistarGasto">Registrar Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/modales.js') }}"></script>

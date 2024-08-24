@@ -1,0 +1,42 @@
+<!---=============================================  FOOTER =================================================-->
+<div class="row bg-danger p-1 pb-0">
+    <div class="col-5 col-md-4 order-2 order-sm-1 mt-1">
+        <textarea class="form-control" name="ventaObservacion" id="" cols="30" rows="2"
+            placeholder="comentarios"></textarea>
+    </div>
+    <div class="col-12 col-md-4 text-center order-1 order-sm-2">
+        {% include 'ventas/venta_add_forma_de_pago.html' %}
+    </div>
+
+    <div class="col-7 col-md-4 order-3 order-sm-3">
+        <div class="row px-1">
+            <div class="row">
+                <div class="w-50  text-end">
+                    <span>TOTAL</span>
+                </div>
+                <div class="w-50 text-end">
+                    <span id="ventaTotal">0</span>
+                </div>
+            </div>
+            <hr class="m-0 p-0">
+            <div class="row">
+                <div class="w-50 text-end">
+                    <span>ABONADO</span>
+                </div>
+                <div class="w-50 text-end">
+                    <span id="ventaAbono">0</span>
+                </div>
+            </div>
+            <hr class="m-0 p-0">
+
+            <div class="row">
+                <div class="w-50 text-end">
+                    <span>CXC</span>
+                </div>
+                <div class="w-50 text-end">
+                    <span id="ventaCxc">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

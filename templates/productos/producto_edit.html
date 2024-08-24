@@ -1,0 +1,76 @@
+{% extends './layout.html' %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block title_doby %}
+<div class="text-center">
+    {{ title }}
+</div>
+
+{% endblock %}
+
+{% block body %}
+<div class="col-12">
+    <div>
+        {% for p in producto %}
+        <form id="updateForm" action="/productos_y_servicios/edit/update/{{ p[0] }}" method="POST">
+            <div class="row px-5">
+                <div class="col-2"></div>
+
+                <div class="col-8">
+                    <div class="form-group mb-2">
+                        <label for="producto_tipo">Producto o Servicio</label>
+                        <select type="text" class="form-control" name="producto_tipo" id="producto_tipo">
+                            <option>{{ p[4] }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_codigo">Codigo unico</label><br>
+                        <span>{{ p[1] }}</span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_nombre">Nombre del producto</label>
+                        <input value="{{ p[2] }}" type="text" class="form-control" name="producto_nombre"
+                            id="producto_nombre" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_precio">Precio</label>
+                        <input value="{{ p[3] }}" type="number" class="form-control" name="producto_precio"
+                            id="producto_precio">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_stock">Stock Actual</label>
+                        <span>no disponible </span>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_stock">Descripción Producto</label>
+                        <textarea type="text" cols="30" rows="4" class="form-control" name="producto_descripcion"
+                            id="producto_descripcion">{{ p[9] }} </textarea>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-sm btn-light me-md-2" type="button" href="/productos_y_servicios">Cancelar</a>
+                        <button class="btn btn-sm btn-success" onclick="confirmarActualizar()"
+                            type="button">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+
+<script>
+    function confirmarActualizar() {
+        var confirmacion = confirm("¿actualizar producto?");
+        if (confirmacion) {
+            // Si el usuario confirma, envía el formulario.
+            document.getElementById("updateForm").submit();
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!-- formulario para aperturar caja -->
+<div class="modal fade" id="cerrarCaja" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCierreCajaTitle"> Cerrar Caja</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/modales/cierre_caja" method="POST">
+                <div class="modal-body">
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaFecha">Fecha</label>
+                        <input type="date" class="{{ style.m_input }}" id="cierreCajaFecha" name="cierreCajaFecha"
+                            required value="{{ datos.fecha_ }}" readonly>
+                    </div>
+
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaVendedor">Vendedor</label>
+                        <input type="text" class="{{ style.m_input }}" id="cierreCajaVendedor" name="cierreCajaVendedor"
+                            placeholder="Nombre y Apellido" required value=" {{ current_user.fullname }}" readonly>
+                    </div>
+
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaVentas">Ventas N°</label>
+                        <input type="number" class="{{ style.m_input }}" id="cierreCajaNumeroVentas"
+                            name="cierreCajaNumeroVentas" placeholder="0" value="{{ datos.caja.ventas_numero_dia }}"
+                            readonly>
+                    </div>
+
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaVentas">Ventas $</label>
+                        <input type="number" class="{{ style.m_input }}" id="cierreCajaVentas" name="cierreCajaVentas"
+                            placeholder="0.00" value="{{ datos.caja.ventas_dia }}" readonly>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaIngresos">Ingresos</label>
+                        <input type="number" class="{{ style.m_input }}" id="cierreCajaIngresos"
+                            name="cierreCajaIngresos" placeholder="0.00" value="{{ datos.caja.ingresos_dia }}" readonly>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaEfectivo">Efectivo</label>
+                        <input type="number" class="{{ style.m_input }}" id="cierreCajaEfectivo"
+                            name="cierreCajaEfectivo" placeholder="0.00" value="{{ datos.caja.efectivo_dia }}" readonly>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaTransferencias">Tranf</label>
+                        <input type="number" class="{{ style.m_input }}" id="cierreCajaTransferencia"
+                            name="cierreCajaTransferencia" placeholder="0.00" value="{{ datos.caja.transferencia_dia }}"
+                            readonly>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaPuntoVenta">Punto Vt</label>
+                        <input type="number" class="{{ style.m_input }}" id="cierreCajaPuntoVenta"
+                            name="cierreCajaPuntoVenta" placeholder="0.00" value="{{ datos.caja.punto_venta_dia }}"
+                            readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal" class="btn btn-sm btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-sm">Cerrar Caja</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    <div>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#aperturaCaja"
+        class="btn btn-sm btn-success m-0 py-1">
+            Abrir caja
+        </button>
+    </div>
+-->

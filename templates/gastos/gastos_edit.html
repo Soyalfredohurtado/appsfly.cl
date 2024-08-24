@@ -1,0 +1,60 @@
+{% extends './layout.html' %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+
+{% block title_doby %}
+<div class="text-center">
+    {{ data.title }}
+</div>
+
+{% endblock %}
+
+{% block body %}
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="registroGastosLabel"></h1>
+    </div>
+    <form id="registarGasto" method="POST" action="" enctype="multipart/form-data">
+        <div class="modal-body">
+            <input type="text" class="form-control m-0" id="gastoID" name="gastoID" value="{{ data.gasto[0][0] }}"
+                readonly hidden>
+            <div>
+                {{ data.gasto[2] }}
+                <label for=" fechaGasto">Fecha</label>
+                <input type="date" id="fechaGasto" name="fechaGasto" readonly value="{{ data.gasto[0][0] }}">
+            </div>
+            <div>
+                <label for="clasificacionGasto">Clasif</label>
+                <select class="form-select" id="clasificacionGasto" name="clasificacionGasto" required>
+                    <option value="" selected disabled class="text-center">Seleccionar</option>
+                    {% for clasificacion in clasificacion_gasto %}
+                    <option value="{{ clasificacion[0] }}" class="text-center">
+                        {{ clasificacion[1]}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="motivoGasto">Motivo</label>
+                <input type="text" id="motivoGasto" name="motivoGasto" required value="{{ data.gasto[0][2] }}">
+            </div>
+            <div>
+                <label for="montoGasto">Monto</label>
+                <input type="number" id="montoGasto" name="montoGasto" placeholder="0.00" step="0.01"
+                    value="{{ data.gasto[0][3] }}" required>
+            </div>
+            <input type="file" class="form-control" id="comprobanteGasto" name="comprobanteGasto" accept="image/*"
+                title="Comprobante (Imagen o PDF)">
+        </div>
+        <div class="modal-footer">
+            <a href="#" data-bs-dismiss="modal">Cancelar</a>
+            <button type="submit" class="btn btn-success btn-sm" id="btnRegistarGasto">Modificar Gasto</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

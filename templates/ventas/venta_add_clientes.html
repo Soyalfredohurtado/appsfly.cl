@@ -1,0 +1,40 @@
+<div class="row mx-0 p-0 my-1">
+    <!--=====================================   CLIENTES  ======================================================-->
+    <div class="col-8 col-lg-4 mx-0 mt-1 order-3 order-sm-1">
+        <select required class="form-select" name="venta_cliente_id" id="venta_cliente_id">
+            <option value="" disabled selected>Selecionar Cliente</option>
+            {% for cliente in clientes %}
+            <option value="{{ cliente[0] }}"> {{ cliente[1] }} | {{ cliente[2] }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-4 col-lg-2 mx-0 pt-2 order-4 order-sm-2">
+        <!-- view -->
+        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalViewCliente"
+            form="modalViewCliente" id="btn-vistaModal">
+            <i class="fa-regular fa-eye"></i>
+        </button>
+        <!-- add -->
+        <button type="button" data-bs-toggle="modal" data-bs-target="#nuevoCliente"
+            class="btn btn-sm btn-warning m-0 py-1">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+    <!--=====================================  DATOS VENTA   =============================================-->
+    <div class="col-6 col-lg-3 order-2 order-sm-3">
+        <div class="row m-0 p-0 text-center">
+            <span>fecha: {{ fecha }} </span>
+            <span class="d-none d-sm-block">vendedor: {{ current_user.fullname }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3 order-1 order-sm-4">
+        <div class="text-center m-0 p-0">
+            <span>nro Folio:</span>
+            <span class="h1 mx-3" style="color: crimson;"><b>{{ venta_folio_numero }}</b></span>
+        </div>
+    </div>
+</div>
+{% if funciones_ventas %}
+<script src="{{ url_for('static', filename='js/funciones_ventas_clientes.js') }}"></script>
+{% endif %}

@@ -1,0 +1,102 @@
+<div class="row m-0 p-0">
+    <div class="table-responsive">
+        <table id="productosTable" class="table">
+            <thead class="table table-sm">
+                <tr>
+                    <th>Producto</th>
+                    <th class="text-center">Cant</th>
+                    <th class="text-center">Precio</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Acciones</th>
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select required name="venta_dt_producto_id_0" class="select form-select form-select-sm">
+                            {% for producto in productos %}
+                            <option class="ventaProducto" id="venta_producto_0" value="{{ producto[0] }}">
+                                {{ producto[2] }} - cd:{{ producto[1] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td width="200px">
+                        <input required type="number" name="venta_dt_cantidad_0"
+                            class="cantidad text-center form-control form-control-sm" min="1" value="1">
+                    </td>
+                    <td width="220px">
+                        <input required type="number" name="venta_dt_precio_0"
+                            class="precio text-end form-control form-control-sm mil_000" value="0">
+                    </td>
+                    <td width="220px">
+                        <span name="venta_total_1" id="venta_dt_total_0"
+                            class="total form-control form-control-sm text-end mil_000">0</span>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-danger btn-sm text-center" onclick="eliminarFila(this)" disabled>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <input type="checkbox" name="venta_dt_entregado_0" id="venta_dt_entregado_0" value="1"
+                            class="form-check-input text-center" checked title="entregado">
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot class="bg-light">
+                <tr class="bg-light">
+                    <td>
+                        <button class="btn btn-success btn-sm" id="buttonAgregarProducto" style="width: 300px;">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script>document.getElementById('buttonAgregarProducto').addEventListener('click', function (event) {
+        event.preventDefault(); // Evita que se envíe el formulario
+        var i = 1; // Contador para el nuevo producto
+
+        // Crea la nueva fila
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = '<td>' +
+            '<select required name="venta_dt_producto_id_' + i + '" id="venta_producto_' + i + '" class="select form-select form-select-sm">' +
+            '<option disabled selected>Buscar Producto</option>' +
+            '{% for producto in productos %}' +
+            '<option class="ventaProducto" value="{{ producto[0] }}">{{ producto[2] }}</option>' +
+            '{% endfor %}' +
+            '</select>' +
+            '</td>' +
+            '<td width="200px">' +
+            '<input required type="number" ///// name="venta_dt_cantidad_' + i + '" id="venta_dt_cantidad_' + i + '"  class="cantidad text-center form-control form-control-sm" min="1" value="1">' +
+            '</td>' +
+            '<td width="220px">' +
+            '<input required type="number" name="venta_dt_precio_' + i + '" id="venta_dt_precio_' + i + '" class="precio form-control form-control-sm text-end" value="0">' +
+            '</td>' +
+            '<td width="220px">' +
+            '<span name="venta_dt_total_' + i + '" id="venta_dt_total_' + i + '" class="total form-control form-control-sm text-end">0</span>' +
+            '</td>' +
+            '<td class="text-center">' +
+            '<button class="btn btn-danger btn-sm text-center" onclick="eliminarFila(this)">' +
+            '<i class="fa-regular fa-trash-can"></i>' +
+            '</button>' +
+            '<input type="checkbox" name="venta_dt_producto_entregado_' + i + '" id="venta_dt_producto_entregado_' +
+            i + '" value="1" class="form-check-input text-center m-2" checked title="entregado">' +
+            '</td>';
+        // Agrega la nueva fila a la tabla
+
+        document.getElementById('productosTable').getElementsByTagName('tbody')[0].appendChild(newRow);
+
+        // Incrementa el contador para el próximo producto
+        i++;
+    });
+
+
+    function eliminarFila(btn) {
+        $(btn).closest('tr').remove(); // Eliminar la fila más cercana al botón
+    }
+
+</script>

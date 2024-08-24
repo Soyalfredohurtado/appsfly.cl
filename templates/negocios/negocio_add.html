@@ -1,0 +1,128 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ datos.title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+<div class="row">
+    <div class="text-center">
+        {% block title_doby %}
+        {{ datos.title }}
+        {% endblock %}
+    </div>
+</div>
+{% block body %}
+
+<div class="row p-2">
+<div class="col-12 col-md-2"></div>
+<div class="card col-12 col-md-8 p-2 shadow shadow-sm" >
+    <div class="card-body">
+        <h5 class="card-title text-center mb-3">Formulario Registro Negocio</h5>
+        <form id="createform" action="/usuarios/negocios" method="POST">                  
+            <div hidden>
+                <input type="text" name="negocioNuevoUsuarioID"  value="{{ current_user.id}}" requerid>
+                <input  type="text" name="negocioNuevoID" value="{{ negocio_id }}"  required>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <label class="input-group-text  d-done d-sm-block" for="negocioNuevoTipo">Negocio<span class='text-danger'>*</span></label>
+                <select value="0" class="input-group-text" name="negocioNuevoTipo" id="negocioNuevoTipo" required>
+                    <option value="" disabled selected>Selecione una opción</option>
+                    <option value="n011">Sala de Venta Óptica</option>
+                    <option value="n012">Comercio Otros</option>
+                </select>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <label class="input-group-text" for="negocioNuevoNombre">Nombre<span class='text-danger'>*</span></label>
+                <input type="text" class="form-control" name="negocioNuevoNombre" id="negocioNuevoNombre" required>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <label class="input-group-text d-done d-sm-block" for="negocioTipoDocumento">Documento<span class='text-danger'>*</span></label>
+                    <select value="0" class="input-group-text" name="negocioTipoDocumento" id="negocioTipoDocumento" required>
+                        <option value="0">Rut</option>
+                        <option value="1">Pasaporte</option>
+                    </select>
+                    <input type="text" class="form-control" name="negocioNumeroDocumento" id="negocioNumeroDocumento" placeholder="número de documento" required>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <label class="input-group-text" for="negocioNuevoCorreo">E-mail<span class='text-danger'>*</span></label>
+                <input type="email" class="form-control" name="negocioNuevoCorreo" id="negocioNuevoCorreo" required>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <label class="input-group-text" for="negocioNuevoDireccion">Dirección<span class='text-danger'>*</span></label>
+                <input type="adress" class="form-control" name="negocioNuevoDireccion" id="negocioNuevoDireccion" required>
+            </div>
+
+            <div class="input-group input-group-sm mb-2">
+                <label class="input-group-text d-none d-sm-block w-25" for="negocioTelefonoNumero">Contacto <span class='text-danger'>*</span></label>
+                <select value="" class="w-25 form-select form-select-sm " name="negocioTelefonoArea" id="negocioTelefonoArea">
+                    <option value="+56">+56 Chile</option>
+                    <option value="+54">+54 Argentina</option>
+                    <option value="+55">+55 Brasil</option>
+                    <option value="+57">+57 Colombia</option>
+                    <option value="+593">+593 Ecuador</option>
+                    <option value="+52">+52 México</option>
+                    <option value="+51">+51 Perú</option>
+                    <option value="+58">+58 Venezuela</option>
+                    <option value="+1-809">+1-809Dominicana</option>
+                    <option value="+598">+598 Uruguay</option>
+                    <option value="+507">+507 Panamá</option>
+                    <option value="+502">+502 Guatemala</option>
+                    <option value="+503">+503 El Salvador</option>
+                    <option value="+506">+506 Costa Rica</option>
+                    <option value="">Otro</option>
+                </select>
+                <input value="" type="number" name="negocioTelefonoNumero" class="form-control form-control-sm w-50">
+            </div>
+
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" required>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Acepto los <a href="https://www.appsfly.cl" class="link-dark">términos y condiciones</a>
+                </label>
+                <div class="invalid-feedback">
+                    Debes aceptar los términos y condiciones.
+                </div>
+            </div>
+
+
+            <hr class="m-2 p-0">
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-sm btn-light me-md-2 text-danger " type="button" href="/">Volver</a>
+                <button class="btn btn-sm btn-success" onclick="confirmarCreacion()" type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="col-12 col-md-2"></div>
+</div>
+
+<div>
+    <small>Si necesitas ayuda, contáctanos al <a target="_blank" href="https://wa.me/56921629730">WhatsApp: +56921629730</a> o por correo electrónico: <a href="mailto:appsfly.cl@gmail.com">appsfly.cl@gmail.com</a>.</small>
+</div>
+
+<script>
+    function confirmarCreacion() {
+        var form = document.getElementById("createform");
+
+        // Verifica la validez del formulario antes de enviarlo
+        if (form.checkValidity()) {
+            var confirmacion = confirm("¿Desea continuar con la creación de su cuenta negocio?");
+            if (confirmacion) {
+                form.submit();
+            }
+        } else {
+            alert("Por favor, completa los campos obligatorios.");
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,55 @@
+* ventas
+* usuarios
+* datos generales empresa
+* tcket de ayuda
+    <div class="col-12 col-md-6 col-lg-3 m-0 p-1 ">
+        <div class="card p-2 m-1 shadow">
+            <div class="card-title text-center mb-0">
+                <h4>
+                    Caja: 1
+                </h4>
+            </div>
+            <hr class="m-0 p-0 mb-2">
+            <div class="card-text mx-2 ">
+                <div class="row">
+                    <div class="col-6 text-end">
+                        <div class="m-0 p-0">
+                            <span class="fs-5">Ventas:</span>
+                        </div>
+                        <div class="m-0 p-0">
+                            <span class="fs-5">Ingresos:</span>
+                        </div>
+                        <div class="m-0 p-0">
+                            <span class="fs-5"> Gastos:</span>
+                        </div> 
+                    </div>
+                    <div class="col-6 text-end">
+                        <div>
+                            <span class="text-end m-2 text-success mil_000 fs-5"><b></b></span>
+                        </div>
+                        <div>
+                            <span class="text-end m-2 text-success mil_000 fs-5"><b></b></span>
+                        </div>
+                        <div>
+                            <span class="text-end m-2 text-danger mil_000 fs-5"><b></b></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr class="m-0 p-0 mb-2">
+                    <div>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#cerrarCaja"
+                            class="{{ style.btn }} btn-danger" title="Cerrar Caja">
+                            <!-- cierre -->
+                            <i class="fa-solid fa-lock"></i>
+                        </button>
+                        <a class="{{ style.btn }}" title="Abrir Caja" href="/modales/cierre_caja" {{
+                            datos.caja.i_abir_caja }}>
+                            <!-- apertura -->
+                            <i class="fa-solid fa-unlock"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

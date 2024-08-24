@@ -1,0 +1,38 @@
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered  table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>FECHA</th>
+                    <th>Nro FOLIO</th>
+                    <th>CLIENTE</th>
+                    <th>VENDEDROR</th>
+                    <th>MONTO</th>
+                    <th>ABONADO</th>
+                    <th>CXC</th>
+                    <th>COMENTARIO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas %}
+                <tr class="table table-bordered m-0 {{ venta[10] }}">
+                    <td class="text-center p-1 m-0 {{ venta[10] }}">{{ venta[3] }}</td>
+                    <td class="text-center p-1  m-0 {{ venta[10] }}">f-{{ venta[1] }}</td>
+                    <td class="p-1  m-0 {{ venta[10] }}">{{ venta[7] }}</td>
+                    <td class="p-1  m-0 {{ venta[10] }}">{{ venta[5] }}</td>
+                    <td class="p-1  m-0 text-end mil_000 {{ venta[10] }}">{{ venta[8]}}</td>
+                    <td class="text-end p-1  m-0 mil_000 {{ venta[10] }}"> {{ venta[9] }}</td>
+                    <td class="text-end p-1  m-0 mil_000 {{ venta[10] }}">{{ venta[10] }}</td>
+                    <td class="text-center p-1  m-0 {{ venta[10] }}"> {{ venta[6] }}</td>
+                    <td class="text-center pt-1 pb-1 mb-0">
+                        <span data-bs-toggle="tooltip" data-bs-placement="left" title="{{ venta[6] }}" hidden><i class="fa-regular fa-comment"></i></span>
+    
+                        <a href="#" title="certificado de compra" class="p-0 m-0"><i class="fa-regular fa-file"></i></a>
+    
+                        <a href="view/{{ venta[0] }}" title="ver" class="p-0 m-0"><i class="fa-regular fa-eye"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>

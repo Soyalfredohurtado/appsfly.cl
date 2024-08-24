@@ -1,0 +1,70 @@
+{% extends './layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="container p-2 px-5">
+    <div class="row px-5">
+        <form id="createform" action="/productos_y_servicios/add/update" method="POST">
+            <div>
+                <fieldset>
+                    <legend class="text-center m-2 p-0">{{ title }}</legend>
+                    <div class="form-group mb-2">
+                        <select type="text" class="form-control" name="producto_tipo" id="producto_tipo">
+                            <option value="producto">Producto</option>
+                            <option value="servicio">Servicio</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_codigo">Codigo unico</label>
+                        <input type="text" class="form-control" name="producto_codigo" id="producto_codigo" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_nombre">Nombre del producto</label>
+                        <input type="text" class="form-control" name="producto_nombre" id="producto_nombre" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_precio">Precio</label>
+                        <input type="number" class="form-control" name="producto_precio" id="producto_precio">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_stock">Stock inicial</label>
+                        <input type="number" class="form-control" name="producto_stock" id="producto_stock">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="producto_stock">Descripción Producto</label>
+                        <textarea type="text" cols="30" rows="4" class="form-control" name="producto_descripcion"
+                            id="producto_descripcion"> </textarea>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-sm btn-ligth me-md-2" type="button" href="/productos_y_servicios">Volver</a>
+                <button class="btn btn-sm btn-success" onclick="confirmarCreacion()" type="submit">Agregar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function confirmarCreacion() {
+        var form = document.getElementById("createform");
+
+        // Verifica la validez del formulario antes de enviarlo
+        if (form.checkValidity()) {
+            var confirmacion = confirm("¿Crear Producto?");
+            if (confirmacion) {
+                form.submit();
+            }
+        } else {
+            alert("Por favor, completa los campos obligatorios.");
+        }
+    }
+</script>
+{% endblock %}

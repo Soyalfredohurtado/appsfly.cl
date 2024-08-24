@@ -1,0 +1,43 @@
+<!-- formulario para cambiar contraseña -->
+<div class="modal fade" id="nuevoPasswordUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalNuevoClienteTitle">Actualizar Contraseña</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/usuarios/perfil/cambiar_password" method="POST" id="formNuevoPasswordUsuario">
+                
+                <div class="modal-body">
+         
+                    <input type="text" value="{{ current_user.id }}" name="usuarioID" hidden requerid>
+                    
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }} w-50" for="usuarioPasswordActual">Contraseña Actual</label>
+                        <input type="password" class="{{ style.m_input }}" name="usuarioPasswordActual" id="usuarioPasswordActual" required>
+                    </div>
+                    
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }} w-50" for="usuarioPasswordNueva">Contraseña Nueva</label>
+                        <input type="password" class="{{ style.m_input }}" name="usuarioPasswordNueva" id="usuarioPasswordNueva" required>
+                    </div>
+                    
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }} w-50" for="usuarioPasswordNuevaConfirmada">Confirmar Contraseña</label>
+                        <input type="password" class="{{ style.m_input }}" name="usuarioPasswordNuevaConfirmada" id="usuarioPasswordNuevaConfirmada" required>
+                    </div> 
+                    
+                    
+                    <input type="text" value="{{ view_redirect }}" hidden name="view_redirect" id="view_redirect">
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <a class="btn btn-sm btn-danger" href="#" data-bs-dismiss="modal" >Cancelar</a>
+                    <button type="submit" class="btn btn-sm btn-success" form="formNuevoPasswordUsuario">Cambiar Contraseña</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

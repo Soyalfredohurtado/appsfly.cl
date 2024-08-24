@@ -1,0 +1,25 @@
+<!-- formulario para aperturar caja -->
+<div class="modal fade" id="cerrarCajaFecha" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCierreCajaTitle"> Cierre Ventas Díario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/modales/cierre_caja/fecha" method="POST">
+                <div class="modal-body">
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="cierreCajaFecha">Fecha</label>
+                        <input type="date" class="{{ style.m_input }}" id="cierreCajaFecha2" name="cierreCajaFecha2"
+                            required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal" class="btn btn-sm btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-sm">Cerrar Caja</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

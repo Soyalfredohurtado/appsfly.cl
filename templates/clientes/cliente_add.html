@@ -1,0 +1,69 @@
+{% extends './layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="container p-2 px-5">
+    <div class="row px-5">
+        <form id="createform" action="/clientes/add/update" method="POST">
+            <div>
+                <fieldset>
+                    <legend class="text-center m-0 p-0 mt-2">{{ title }}</legend>
+                    <div class="mb-2">
+                        <label class="form-label m-1" for="cliente_rut">Rut</label>
+                        <div class="input-group">
+                            <input type="text" name="send" value="viewCliente" hidden>
+                            <input type="text" class="form-control" name="cliente_rut" id="cliente_rut" required>
+                            <button class="btn btn-outline-primary" type="button" id="validar_rut">Validar</button>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label m-1" for="cliente_nombre">Nombre y Apellido</label>
+                        <input type="text" class="form-control" name="cliente_nombre" id="cliente_nombre" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label m-1" for="cliente_telefono">Teléfono</label>
+                        <input type="tel" class="form-control" name="cliente_telefono" id="cliente_telefono">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label m-1" for="cliente_correo">Correo Electrónico</label>
+                        <input type="email" class="form-control" name="cliente_correo" id="cliente_correo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label m-1" for="cliente_receta_medica">Receta Médica</label>
+                        <input type="file" class="form-control" id="cliente_receta_medica" name="cliente_receta_medica">
+                    </div>
+                    <div class="mb-2 form-check">
+                        <input class="form-check-input m-1" type="checkbox" id="generar_carnet" value="true">
+                        <label class="form-check-label" for="generar_carnet">Generar Carnet de Afiliación</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-3">
+                <a class="btn btn-secondary me-md-2 w-25" href="/clientes">Volver</a>
+                <button class="btn btn-success w-25" onclick="confirmarCreacion()" type="submit">Agregar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function confirmarCreacion() {
+        var form = document.getElementById("createform");
+
+        // Verifica la validez del formulario antes de enviarlo
+        if (form.checkValidity()) {
+            var confirmacion = confirm("¿Crear Cliente?");
+            if (confirmacion) {
+                form.submit();
+            }
+        } else {
+            alert("Por favor, completa los campos obligatorios.");
+        }
+    }
+</script>
+{% endblock %}

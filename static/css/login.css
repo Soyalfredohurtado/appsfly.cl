@@ -1,0 +1,9 @@
+body {
+    background-color: #f0f0f0;
+    /* Color de fondo */
+    /* O puedes usar una imagen de fondo */
+    /* background-image: url('ruta/a/tu/imagen.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Ajusta la imagen para cubrir todo el fondo */
+}

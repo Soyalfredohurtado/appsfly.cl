@@ -1,0 +1,58 @@
+<!-- formulario agregar abono -->
+<div class="modal fade" id="pagoAbono" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalNuevoPagoAbono"> Registrar Pago/Abono</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/modales/add_pa" method="POST">
+                <div class="modal-body">
+                    <input value="{{ data[1] }}" name="numeroVenta" hidden>
+                    <input type="text" id="clienteID" name="clienteID"
+                    value="{{ cliente[0] }}" readonly hidden>
+                
+                    <input value="{{ id_venta }}" type="text" class="form-control mb-2" id="ventaID" name="ventaID"
+                        required hidden>
+                    <label for="paFecha">Fecha</label>
+                    <input type="date" class="form-control mb-2" id="cajaFecha" name="cajaFecha" required disabled>
+
+                    <label for="paCliente">Cliente</label>
+                    <input type="text" class="form-control mb-2" id="cajaVendedor" name="cajaVendedor"
+                        placeholder="Nombre y Apellido" required value="{{ cliente[2] }}" readonly disabled>
+
+                    <label for="paVendedor">Vendedor/a</label>
+                    <input type="text" class="form-control mb-2" id="cajaVendedor" name="cajaVendedor"
+                        placeholder="Nombre y Apellido" required value=" {{ current_user.fullname }}" readonly disabled>
+
+                    <label for="paFormaDePago">Forma de pago</label>
+                    <select class="form-control form-control-sm mb-2" name="paFormaDePago" id="paFormaDePago" required>
+                        <option value="pa-01">Efectivo</option>
+                        <option value="pa-02">Punto de Venta</option>
+                        <option value="pa-03">Transferencia</option>
+                    </select>
+                    <label for="pago_abono_monto">Monto</label>
+                    <input type="number" placeholder="0.00" class="formaPagoMonto form-control form-control-sm mb-2"
+                        name="paMonto" id="pago_abono_monto" min="0" required value="{{ tt_cc_pa.cxc }}">
+                    <label for="paNumeroOperacion">Nro Operación</label>
+                    <input type="text" placeholder="Nro Operación" class="form-control form-control-sm"
+                        name="paNumeroOperacion">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    <div>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#aperturaCaja"
+        class="btn btn-sm btn-success m-0 py-1">
+            Abrir caja
+        </button>
+    </div>
+-->

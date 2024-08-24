@@ -1,0 +1,26 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly: database {% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row p-2">
+    <div class="row">
+        <h1 class="text-danger text-center">Estructura DB </h1>
+    </div>
+        {% for table in esquema_db %}
+            <div class="col-12 col-md-4 col-lg-3 p-3">
+                <h5 class="text-danger">{{ table }} </h5>
+                {% for column in esquema_db[table] %}
+                    <li>{{ column }}</li>
+                {% endfor %}
+            </div>
+        {% endfor %}
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,89 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly: database {% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row p-3">
+    <div class="card p-3 mb-3 shadow shadow-sm">
+        <div  class="card-header mb-2">
+            <h5> Negocios </h5>
+        </div>
+        <ol>
+        {% for n in negocios_table  %}
+            <li class="mb-2"><span class="bg-warning text-dark">{{ n[2] | mayuscula }}:</span> {{ n }}</li>
+            <hr/>
+        {% endfor %}
+            
+        </ol>
+    </div>
+    
+    <div class="card p-3 mb-3 shadow shadow-sm">
+        <div  class="card-header mb-2">
+            <h5> Relacion usuario negocio </h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-responsive">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col">usuarios_id</th>
+                        <th scope="col">negocios_id</th>
+                        <th scope="col">rol_asignado</th>
+                        <th scope="col">status</th>
+                        <th scope="col">conexio db</th>
+                        <th scope="col">fecha creación</th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    {% for n in relacion_usuario_negocio  %}
+                    <tr>
+                        <td>{{ n[0] }}</td>
+                        <td>{{ n[1] }}</td>
+                        <td>{{ n[2] }}: {{ 'Administrador' if  n[2] == 0 or n[2] == 11 }}{{ 'Vendedor' if  n[2] == 1  }}</td>
+                        <td class="text-center">{{ 'Habilitado' if  n[3] == 1 else 'Deshabilitado'  }}</td>
+                        <td>{{ n[4] }}</td>
+                        <td>{{ n[5] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="card p-3 mb-3 shadow shadow-sm">
+        <div  class="card-header mb-2">
+            <h5> Usuarios </h5>
+        </div >
+        <div class="table-responsive">
+            <table class="table table-responsive">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col"> ID </th>
+                        <th scope="col"> pendiente </th>
+                        <th scope="col">Nro Documento</th>
+                        <th scope="col">Nombre y Apellido</th>
+                        <th scope="col">E-Mail</th>
+                        <th scope="col">Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for n in usuarios_table  %}
+                    <tr>
+                        <td>{{ n[0] }}</td>
+                        <td>{{ n[1] }}</td>
+                        <td>{{ n[2] }}</td>
+                        <td>{{ n[3] }}</td>
+                        <td>{{ n[7] }}</td>
+                        <td><a href="tel:{{ n[9] }}{{ n[10] }}" target="_blank"> {{ n[9] }}-{{ n[10] }} </a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

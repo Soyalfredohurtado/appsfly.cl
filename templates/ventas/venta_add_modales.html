@@ -1,0 +1,71 @@
+<!--========================================== Modal - ADD ====================================================-->
+<div class="modal fade" id="modalNuevoCliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalNuevoCliente"> Nuevo Cliente </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form name="121654658" id="modalNuevoCliente">
+                <div class="modal-body">
+                    <label for="clienteRut" class="form-label">Rut</label>
+                    <input type="text" class="form-control" id="clienteRut" name="clienteRut" placeholder="xxxxxxxx-k"
+                        required>
+
+                    <label for="clienteNombre" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" id="clienteNombre" name="clienteNombre" required>
+
+                    <label for="clienteTelefono" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="clienteTelefono" name="clienteTelefono">
+
+                    <label for="clienteCorreo" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="clienteCorreo" name="clienteCorreo">
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secundary" href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button class="btn btn-success" type="submit" form="modalNuevoCliente">Crear cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+========================================== Modal - VIEW ====================================================
+
+<div class="modal fade" id="modalViewCliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalViewClienteTitle"> Vista Cliente </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form nam="prueba" id="modalViewCliente">
+                <div class="modal-body">
+                    <label for="clienteRut" class="form-label">Rut</label>
+                    <input type="text" class="form-control" id="clienteRutVista" name="clienteRut"
+                        placeholder="xxxxxxxx-k" required disabled>
+
+                    <label for="clienteNombre" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" id="clienteNombreVista" name="clienteNombre" required
+                        disabled>
+
+                    <label for="clienteTelefono" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="clienteTelefono" name="clienteTelefono" disabled>
+
+                    <label for="clienteCorreo" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="clienteCorreo" name="clienteCorreo" disabled>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" href="#" data-bs-dismiss="modal">Cerrar</button>
+
+                    <button class="btn btn-success" type="submit" form="modalNuevoCliente">Crear cliente</button>
+
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

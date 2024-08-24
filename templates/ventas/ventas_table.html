@@ -1,0 +1,35 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block submenu %}
+    {% include 'sub-nav.html' %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="row p-2">
+    <div class="col-6">
+        <a type="button" class="btn btn-success btn-sm m-1" href="/ventas/add">
+            <i class="fa-solid fa-plus"></i>
+            <span class="d-none d-sm-inline">Agregar</span>
+        </a>
+        <button class="btn btn-success btn-sm m-1 disabled ">
+            <i class="fa-regular fa-file-pdf"></i>
+            <span class="d-none d-sm-inline">Reporte</span>
+        </button>
+    </div>
+    <div class="col-6 text-center">
+        <h3 style="color: rgb(0, 91, 103);">{{title|safe}} <b class="mil_000 text-danger">{{ total_cxc }} </b></h3>
+    </div>
+</div>
+
+<div class="row">
+{% include 'ventas/ventas_table_extends.html' %}
+</div>
+{% endblock %}

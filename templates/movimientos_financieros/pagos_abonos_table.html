@@ -1,0 +1,23 @@
+{% extends './layout.html' %}
+
+{% block title %}AppsFly | {{ title }}{% endblock %}
+
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
+{% block body %}
+<div class="row p-1">
+    <div class="col-7">
+        <a href="#" class="btn btn-success btn-sm m-1"><i class="fa-solid fa-plus"></i> AGREGAR</a>
+        <!-- <button class="btn btn-light btn-sm m-1 disabled ">Carga masiva</button> -->
+        <button class="btn btn-light btn-sm m-1 disabled ">Reporte</button>
+    </div>
+    <div class="col-5 text-center">
+        <h4 style="color: rgb(0, 91, 103);">{{title}}</h4>
+    </div>
+</div>
+
+{% include 'movimientos_financieros/pago_abonos_table.extends.html' %} 
+
+{% endblock %}

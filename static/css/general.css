@@ -1,0 +1,17 @@
+* {
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Estilo adicional si es necesario */
+.div-flotante {
+    width: auto;
+    padding: 0;
+    /* Ajusta según tus necesidades */
+    z-index: 1000;
+    /* Asegura que esté por encima de los demás elementos */
+    position: fixed;
+    /* O position: absolute; dependiendo del comportamiento deseado */
+    top: 33px;
+    right: 20px;
+    /* Añade cualquier otro estilo que desees */
+}

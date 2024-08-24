@@ -1,0 +1,56 @@
+<!-- Modal ADD nuevo Producto o Servicio -->
+<div class="modal fade" id="nuevoProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalNuevoProductoTitle"> Nuevo Cliente</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/productos_y_servicios/add/update" method="POST" id="formNuevoProducto">
+                <div class="modal-body">
+                    <div>
+                        <input type="text" value="{{ producto_id }}" name="productoID" hidden>
+                    </div>
+
+
+                    <div class="{{ style.m_div }}">
+                        <select class="form-select text-center" id="productoTipo" name="productoTipo" required>
+                            <option value="producto">Producto</option>
+                            <option value="servicio">Servicio</option>
+                        </select>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="productoCodigo">Codigo unico</label>
+                        <input type="text" class="{{ style.m_input }}" name="productoCodigo" id="productoCodigo"
+                            required>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="productoNombre">Nombre</label>
+                        <input type="text" class="{{ style.m_input }}" name="productoNombre" id="productoNombre"
+                            required>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="productoPrecio">Precio</label>
+                        <input type="number" class="{{ style.m_input }}" name="productoPrecio" id="productoPrecio"
+                            placeholder="0.00" required min="0">
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="productoDescripcion">Descripción</label>
+                        <textarea type="text" rows="1" class="form-control" name="productoDescripcion"
+                            id="producto_descripcion"></textarea>
+                    </div>
+                    <div class="form-check form-switch mx-4" title="activa el registro de inventarios">
+                        <label class="form-check-label" for="control_inventario">Habilitar control de inventario</label>
+                        <input class="form-check-input" type="checkbox" id="control_inventario"
+                            name="control_inventario" value="1" checked>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success" form="formNuevoProducto">crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

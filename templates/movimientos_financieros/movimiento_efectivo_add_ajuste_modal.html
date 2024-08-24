@@ -1,0 +1,42 @@
+<!-- formulario para aperturar caja -->
+<div class="modal fade" id="nuevoAjuste" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalNuevoAjuste">Registrar Ajuste de Efectivo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/movimientos_financiero//efectivo/ajuste" method="POST" id="formNuevoCliente">
+                <div class="modal-body">
+                    <div>
+                        <input type="text" value="{{ ajuste_id }}" name="movimientoEfectivoAjusteID">
+                    </div>
+
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="movimientoEfectivoAjusteTipo">Tipo de ajuste</label>
+                    
+                            <select required name="movimientoEfectivoAjusteTipo" id="movimientoEfectivoAjusteTipo">
+                                <option value="0">Entrada</option>
+                                
+                                <option value="1">Salida</option>
+                            </select>
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="movimientoEfectivoAjusteMonto">Monto</label>
+                        <input type="number" class="{{ style.m_input }}" name="movimientoEfectivoAjusteMonto" id="movimientoEfectivoAjusteMonto"
+                    </div>
+                    <div class="{{ style.m_div }}">
+                        <label class="{{ style.m_span }}" for="movimientoEfectivoAjusteMotivo">  Motivo</label>
+                        <input type="text" class="{{ style.m_input }}" name="movimientoEfectivoAjusteMotivo" id="movimientoEfectivoAjusteMotivo"
+                            required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success" form="formNuevoCliente">crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

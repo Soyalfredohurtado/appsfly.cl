@@ -1,0 +1,29 @@
+<div class="row  m-0 shadow sticky-top p-0">
+    <div class="bg-primary m-0 p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary p-1">
+            <div class="container-fluid">
+                <a href="/dashboard">
+                    <img class="my-2" src="{{ url_for('static', filename='img/logog_principal_vertical.png') }}" alt="Logo AppsFly" href="/dashboard"
+                        width="120">
+                </a>
+            
+                <button class="navbar-toggler navbar-toggler-white text-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fa-solid fa-bars"></i>
+                </button>
+            
+                <div class="collapse navbar-collapse px-4 text-center" id="navbarNav">
+                  <ul class="navbar-nav ms-auto">
+                    {% for nav in nav_rol %}
+                    <li class="nav-item"> {{ nav | safe}}</li> 
+                    {% endfor%}
+                    <div class="d-grid gap-2 mx-auto">
+                        <a href="{{ url_for('usuarios.usuario_perfil') }}" title="mi perfil">
+                            <img  src="https://img.freepik.com/vector-premium/imagen-perfil-avatar-hombre-ilustracion-vectorial_268834-538.jpg?size=338&ext=jpg&ga=GA1.1.672697106.1718582400&semt=sph" class="rounded float-start mr-3" alt="Perfil" width="40" height="40">
+                        </a>
+                    </div>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

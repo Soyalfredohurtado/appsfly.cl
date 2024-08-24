@@ -1,0 +1,38 @@
+<!-- formulario para aperturar caja -->
+<div class="modal fade" id="aperturaCaja" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalNuevoClienteTitle"> Apertura de Caja </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <label for="cajaFecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="cajaFecha" name="cajaFecha" required>
+
+                    <label for="cajaVendedor" class="form-label">Vendedor/a</label>
+                    <input type="text" class="form-control" id="cajaVendedor" name="cajaVendedor"
+                        placeholder="Nombre y Apellido" required value=" {{ current_user.fullname }}" readonly>
+
+                    <label for="cajaEfectivo" class="form-label">Efectivo Caja</label>
+                    <input type="number" class="form-control" id="cajaEfectivo" name="cajaEfectivo" placeholder="0.00">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-bs-dismiss="modal">Cancelar</a>
+                    <button type="submit" class="btn btn-success">Abrir Caja</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    <div>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#aperturaCaja"
+        class="btn btn-sm btn-success m-0 py-1">
+            Abrir caja
+        </button>
+    </div>
+-->

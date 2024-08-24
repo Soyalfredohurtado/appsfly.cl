@@ -1,0 +1,102 @@
+<h6 style="background-color: rgba(95, 158, 160, 0.669)">Detalle de venta</h6>
+<div>
+    <label>Rut</label>
+    <span>{{ data.cliente[1]}}</span>
+
+    <label>Nombres</label>
+    <span>{{ data.cliente[2]}}</span>
+
+    <label>Teléfono</label>
+    <span>{{ data.cliente[3]}}</span>
+
+    <label>Email</label>
+    <span>{{ data.cliente[4]}}</span>
+
+    <label>Nro Venta</label>
+    <span>{{ data.generales[1]}}</span>
+
+    <label>Fecha</label>
+    <span>{{ data.generales[3]}}</span>
+
+    <label>Hora</label>
+    <span>{{ data.generales[4]}}</span>
+
+    <label>Vendedor</label>
+    <span>{{ data.generales[8]}}</span>
+</div>
+
+
+<h6 style="background-color: rgba(95, 158, 160, 0.669)">Productos y Servicios</h6>
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dt in data.venta_dt %}
+        <tr>
+            <td>{{ dt[12] }}</td>
+            <td>{{ dt[11] }}</td>
+            <td>{{ dt[4] }}</td>
+            <td>{{ dt[3] }}</td>
+            <td> {{ dt[5] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+<div>
+    <h6 style="background-color: rgba(95, 158, 160, 0.669)">Pagos y abonos
+    </h6>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th class="text-center">Fecha</th>
+                <th class="text-center">Metodo</th>
+                <th class="text-center">Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in data.pagos_abonos %}
+            <tr>
+
+                <td class="text-center">{{ p[7] }}</td>
+                <td> {{ p[10] }}</td>
+                <td class="text-end mil_000">{{ p[2] }}</td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+
+<h6 style="background-color: rgba(95, 158, 160, 0.669);">
+    <span>Monto: $<span>{{ data.tt_cc_pa.total }}</span> || Abonado: $<span>{{ data.tt_cc_pa.abono }}</span>
+        || CXC $<span>{{ data.tt_cc_pa.cxc }}</span></span>
+</h6>
+<div>
+    <textarea name="" id="" cols="30" rows="2" maxlength="110" placeholder="observaciones:"></textarea>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.mil_000').each(function () {
+            var numero = $(this).text();
+            $(this).text(formatearNumeroConSeparadorDeMiles(numero));
+        });
+    });
+
+    function formatearNumeroConSeparadorDeMiles(numero) {
+        return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+</script>
